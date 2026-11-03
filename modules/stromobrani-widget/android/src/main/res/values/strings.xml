@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="tree_widget_name">Stromobraní</string>
+  <string name="tree_widget_description">Aktuální série a nejbližší památný strom.</string>
+</resources>
