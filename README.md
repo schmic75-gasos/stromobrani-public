@@ -13,4 +13,6 @@ Nativní moduly a konfigurace jsou součástí repozitáře. Změny v nich vyža
 
 ## Licence
 
-Licence zdrojového kódu zatím není stanovena.
+Originální zdrojový kód a materiály vytvořené pro Stromobraní ve veřejné verzi 1.8.0 jsou poskytovány pod licencí [PolyForm Noncommercial 1.0.0](LICENSE). Licence dovoluje nekomerční používání, úpravy a šíření této verze; komerční použití vyžaduje samostatný souhlas držitele práv. Tato podmínka znamená, že projekt není open source podle definice OSI.
+
+Licence nepokrývá knihovny, mapová data, fonty, služby ani jiné materiály třetích stran; ty zůstávají pod svými vlastními podmínkami. Název a značky Stromobraní nejsou licencí poskytnuty k použití jako označení cizí aplikace.
