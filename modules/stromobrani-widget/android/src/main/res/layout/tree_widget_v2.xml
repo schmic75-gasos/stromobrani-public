@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/tw2_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="14dp"
+  android:background="@drawable/tree_widget_v2_bg">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="🌳 Stromobraní"
+      android:textColor="#E9B44C"
+      android:textStyle="bold"
+      android:textSize="13sp" />
+    <TextView
+      android:id="@+id/tw2_streak"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#FFFFFF"
+      android:textStyle="bold"
+      android:textSize="13sp" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/tw2_tree"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Nejbližší nenavštívený strom"
+      android:textColor="#B9CDB0"
+      android:textSize="11sp" />
+    <TextView
+      android:id="@+id/tw2_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:maxLines="2"
+      android:ellipsize="end"
+      android:textColor="#FFFFFF"
+      android:textStyle="bold"
+      android:textSize="17sp" />
+    <TextView
+      android:id="@+id/tw2_distance"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#7FB069"
+      android:textStyle="bold"
+      android:textSize="22sp" />
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/tw2_tod"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:textColor="#FBF0CF"
+    android:textSize="12sp" />
+  <TextView
+    android:id="@+id/tw2_footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#8FA886"
+    android:textSize="10sp" />
+</LinearLayout>

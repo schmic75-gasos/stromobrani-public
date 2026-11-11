@@ -8,3 +8,11 @@ node_modules
 'App (*).js'
 /dist
 dist
+__pycache__/
+*.pyc
+App.js (*)
+# Backend and administration files are intentionally excluded from the public mobile-app branch.
+app.py*
+admin.html
+patch.py
+*.db

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Stromobraní",
     "slug": "stromobrani",
-    "version": "1.4.0",
+    "version": "1.8.0",
     "scheme": "stromobrani",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
@@ -14,7 +14,7 @@
     },
     "android": {
       "package": "cz.stromobrani.app",
-      "versionCode": 5,
+      "versionCode": 9,
       "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -23,15 +23,7 @@
       "permissions": [
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.CAMERA",
-        "android.permission.READ_MEDIA_IMAGES",
-        "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.RECORD_AUDIO",
-        "android.permission.MODIFY_AUDIO_SETTINGS",
-        "android.permission.FOREGROUND_SERVICE",
-        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
         "android.permission.CAMERA",
         "android.permission.READ_MEDIA_IMAGES",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -72,14 +64,20 @@
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.WRITE_EXTERNAL_STORAGE",
-        "android.permission.SYSTEM_ALERT_WINDOW",
-        "android.permission.RECORD_AUDIO",
-        "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.SYSTEM_ALERT_WINDOW"
       ]
     },
     "plugins": [
       "expo-dev-client",
+      "./plugins/withAppForceDark",
+      "expo-iap",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-2764641499857589~7303600829",
+          "delayAppMeasurementInit": true
+        }
+      ],
       [
         "expo-sensors",
         {
@@ -115,18 +113,14 @@
           ]
         }
       ],
-      "./plugins/withTreeAndroidWidget",
-      [
-        "@rnmapbox/maps",
-        {
-          "RNMapboxMapsImpl": "mapbox"
-        }
-      ],
+      "@maplibre/maplibre-react-native",
       [
         "expo-location",
         {
           "locationWhenInUsePermission": "Stromobraní potřebuje tvou polohu, aby ověřilo, že stojíš u stromu.",
-          "isAndroidBackgroundLocationEnabled": false,
+          "locationAlwaysAndWhenInUsePermission": "Stromobraní může zjišťovat polohu i na pozadí, aby ti poslalo upozornění, že jsi poblíž nenavštíveného stromu. Poloha zůstává v telefonu.",
+          "locationAlwaysPermission": "Stromobraní může zjišťovat polohu i na pozadí, aby ti poslalo upozornění, že jsi poblíž nenavštíveného stromu. Poloha zůstává v telefonu.",
+          "isAndroidBackgroundLocationEnabled": true,
           "isAndroidForegroundServiceEnabled": false
         }
       ],
@@ -148,15 +142,17 @@
         "expo-build-properties",
         {
           "android": {
-            "enableProguardInReleaseBuilds": false,
-            "enableShrinkResourcesInReleaseBuilds": false,
-            "enableMinifyInReleaseBuilds": false
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "enableMinifyInReleaseBuilds": true,
+            "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }\n-keep class com.google.android.gms.ads.** { *; }\n-keep class io.invertase.googlemobileads.** { *; }\n-keep class org.maplibre.** { *; }\n-dontwarn org.maplibre.**\n-keep class com.android.billingclient.** { *; }\n-dontwarn com.google.android.gms.**\n-keep class cz.stromobrani.** { *; }"
           }
         }
       ],
-      "expo-asset"
+      "expo-asset",
+      "expo-sharing"
     ],
     "extra": {
+      "playIntegrityCloudProjectNumber": 556430124144,
       "eas": {
         "projectId": "f97d40c4-a854-4219-825a-d623777c57fa"
       }

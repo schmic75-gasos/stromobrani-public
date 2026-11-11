@@ -10,16 +10,21 @@ class StromobraniWidgetModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("StromobraniWidget")
 
+    /** Snímek stavu z aplikace (i z úlohy na pozadí). Widget se překreslí hned. */
     Function("updateSnapshot") { props: Map<String, Any?> ->
       val context = appContext.reactContext ?: return@Function
-      val streak = (props["streak"] as? Number)?.toInt() ?: 0
-      val treeName = props["treeName"]?.toString().orEmpty()
-      val distance = props["distance"]?.toString().orEmpty()
+      fun num(key: String) = (props[key] as? Number)?.toLong() ?: 0L
+      fun str(key: String) = props[key]?.toString().orEmpty()
       context.getSharedPreferences(TreeWidgetProvider.PREFERENCES, Context.MODE_PRIVATE)
         .edit()
-        .putInt("streak", streak)
-        .putString("treeName", treeName)
-        .putString("distance", distance)
+        .putInt("streak", num("streak").toInt())
+        .putString("treeName", str("treeName"))
+        .putString("distance", str("distance"))
+        .putLong("kod", num("kod"))
+        .putString("tod", str("tod"))
+        .putLong("todKod", num("todKod"))
+        .putInt("visits", num("visits").toInt())
+        .putLong("ts", if (num("ts") > 0) num("ts") else System.currentTimeMillis())
         .apply()
 
       val manager = AppWidgetManager.getInstance(context)
